@@ -57,7 +57,7 @@ const PORT = 3333;
 const server = createServer((request,response)=>{
  const {method, url} = request
 
- if(method === 'GET' && url === '/receitas'){
+ if(method === 'GET' && url === '/receitas'){//listar as receitas url: localhost:3333/receitas
     lerDadosReceitas((err, receitas) =>{
         if(err){
             response.writeHead(500, {'Content-Type':'application.json'})
@@ -76,7 +76,7 @@ const server = createServer((request,response)=>{
     response.writeHead(200, {'Content-Type':'application.json'})
     response.end(data)
     })
-}else if(method === 'POST' && url === '/receitas'){
+}else if(method === 'POST' && url === '/receitas'){//cadastar receitas url: localhost:3333/receitas
    
     let body = ''
     request.on("data", (chunk) => {
@@ -91,7 +91,6 @@ const server = createServer((request,response)=>{
 
         const novaReceita = JSON.parse(body)
 
-        console.log('AQUI')
         lerDadosReceitas((err, receitas) => {
             if(err){
                 response.writeHead(500,{'Content-Type':"application/json"})
@@ -115,8 +114,8 @@ const server = createServer((request,response)=>{
             
         })
     })
-}else if(method === 'PUT' && url.startsWith ('/receitas/')){    
-    const id = parseInst(url.split('/') [2])
+}else if(method === 'PUT' && url.startsWith ('/receitas/')){//atualizar receitas url: localhost:3333/receitas/n da receita    
+    const id = parseInt(url.split('/') [2])
     let body = ''
     request.on('data', (chunk)=>{
         body += chunk
@@ -156,19 +155,88 @@ const server = createServer((request,response)=>{
             })
         })
     })
-}else if(method === 'DELETE' && url.startsWith ('/receitas/')){
-    response.end(method)
-}else if(method === 'GET' && url.startsWith ('/receitas/')){
-    response.end(method)
-}else if(method === 'GET' && url.startsWith ('/categorias')){
-    //localhost:3333/categorias
-    response.end(method)
-}else if(method === 'GET' && url.startsWith ('/busca')){
-    //localhost:3333/busca?termo=Pratos%20Principais
-    response.end(method)
-}else if(method === 'GET' && url.startsWith ('/ingredientes')){
-    //localhost:3333/ingredientes
-    response.end(method)
+}else if(url.startsWith ('/receitas/') && method === 'DELETE'){ // deletar uma receita url: localhost:3333/receitas/n da receita
+    const id = parseInt(url.split('/')[2])
+    lerDadosReceitas((err, receitas) => {
+        if(err){
+            response.writeHead(500, {'Content-Type':'application/json'})
+            response.end(JSON.stringify({message: 'Erro interno no servidor'}))
+            return; // função => parar a execução
+        }
+        const indexReceita = receitas.findIndex((receita) => receitas.id === id)
+        if(indexReceita === 1){
+            response.writeHead(404, {'Content-Type':'application/json'})
+            response.end(JSON.stringify({message: 'receita não encontrada'}))
+            return;
+        }
+        receitas.splice(indexReceita, 1)
+        fs.writeFile('receitas.json', JSON.stringify(receitas, null, 2), (err) => {
+            if(err){
+                response.writeHead(500, {'Content-Type':'application/json'})
+                response.end(JSON.stringify({message: 'Erro ao salvar os dados'}))
+                return
+            }
+            response.writeHead(201, {'Content-Type':'application/json'})
+            response.end(JSON.stringify({message: 'receita deletada'}))
+        })
+    })
+}else if(url.startsWith('/receitas/') && method === 'GET'){ // DETALHES DE UMA RECEITA PELO ID url: localhost:3333/receitas/n da receita
+    const id = parseInt(url.split('/')[2])
+    lerDadosReceitas((err, receitas) => {
+        if(err){
+            response.writeHead(500, {'Content-Type':'application/json'})
+            response.end(JSON.stringify({message: 'Erro interno no servidor'}))
+            return; // função => parar a execução
+        }
+        const indexReceita = receitas.findIndex((receita) => receita.id === id)
+        if(indexReceita === -1){
+            response.writeHead(404, {'Content-Type':'application/json'})
+            response.end(JSON.stringify({message: 'receita não encontrada'}))
+            return;
+        }
+        const receitaEncontrada = receitas[indexReceita]
+        response.writeHead(200, {'Content-Type':'application/json'})
+        response.end(JSON.stringify(receitaEncontrada))
+    })
+}else if (method === 'GET' && url.startsWith('/categorias')) { //listar todas as categorias url: localhost:3333/categorias
+    lerDadosReceitas((err, receitas) => {
+        if (err) {
+            response.writeHead(500, {'Content-Type': 'application/json'});
+            response.end(JSON.stringify({message: 'Erro ao ler dados das receitas'}));
+            return;
+        }
+        const categorias = receitas.map(receita => receita.categoria);
+        const categoriasUnicas = [...new Set(categorias)];
+        response.writeHead(200, {'Content-Type': 'application/json'});
+        response.end(JSON.stringify(categoriasUnicas));
+    });
+}else if (method === 'GET' && url.startsWith('/busca')) {//buscar por categoria url: localhost:3333/busca?termo={categoria}
+    const params = new URLSearchParams(url.split('?')[1]);
+    const termo = params.get('termo');
+    lerDadosReceitas((err, receitas) => {
+        if (err) {
+            response.writeHead(500, {'Content-Type': 'application/json'});
+            response.end(JSON.stringify({message: 'Erro ao ler dados das receitas'}));
+            return;
+        }
+        const receitasFiltradas = receitas.filter(receita => receita.categoria.toLowerCase() === termo.toLowerCase());
+        response.writeHead(200, {'Content-Type': 'application/json'});
+        response.end(JSON.stringify(receitasFiltradas));
+    });
+}else if (method === 'GET' && url.startsWith('/ingredientes')) {//trazer todas as receitas que possue esse ingredientes url: localhost:3333/ingredientes/pesquisa={ingrediente}
+    const params = new URLSearchParams(url.split('?')[1]);
+    const ingrediente = params.get('pesquisa');
+    console.log(ingrediente)
+    lerDadosReceitas((err, receitas) => {
+        if (err) {
+            response.writeHead(500, {'Content-Type': 'application/json'});
+            response.end(JSON.stringify({message: 'Erro ao ler dados das receitas'}));
+            return;
+        }
+        const receitasComIngrediente = receitas.filter(receita => receita.ingredientes.includes(ingrediente));
+        response.writeHead(200, {'Content-Type': 'application/json'});
+        response.end(JSON.stringify(receitasComIngrediente));
+    });
 }else{
     response.writeHead(404, {'Content-Type':'application/json'})
     response.end(JSON.stringify({message:'Rota não encontrada'}))
