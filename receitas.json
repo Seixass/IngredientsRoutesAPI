@@ -1,0 +1,109 @@
+[
+  {
+    "id": "1",
+    "nome": "Risoto de Funghi",
+    "categoria": "Pratos Principais",
+    "ingredientes": [
+      "200g de arroz arbóreo",
+      "50g de funghi secchi",
+      "1 cebola picada",
+      "2 dentes de alho picados",
+      "100ml de vinho branco seco",
+      "   1 litro de caldo de legumes",
+      "50g de manteiga",
+      "Queijo parmesão ralado a gosto",
+      "Sal e pimenta a gosto"
+    ],
+    "Modo de Preparo": "Refogue a cebola e o alho em um pouco de azeite. Adicione o arroz arbóreo e mexa por alguns minutos. Acrescente o vinho branco e deixe evaporar. Hidrate o funghi secchi em água quente por 15 minutos, escorra e pique. Adicione o funghi ao risoto e vá adicionando o caldo de legumes aos poucos, mexendo sempre, até o arroz estar cozido. Misture a manteiga e o queijo parmesão. Sirva quente, salpicado com mais queijo parmesão."
+  },
+  {
+    "id": "2",
+    "nome": "Salada Caesar",
+    "categoria": "Saladas",
+    "ingredientes": [
+      "Alface romana",
+      "Croutons",
+      "Parmesão em lascas",
+      "Peito de frango grelhado",
+      "Molho Caesar (maionese, mostarda, suco de limão, alho, anchovas, azeite, sal e pimenta)"
+    ],
+    "Modo de Preparo": ": Lave e rasgue as folhas de alface romana. Grelhe o peito de frango e corte em tiras. Prepare o molho Caesar misturando maionese, mostarda, suco de limão, alho picado, anchovas esmagadas, azeite, sal e pimenta. Misture as folhas de alface, o frango grelhado, os croutons e as lascas de parmesão. Regue com o molho Caesar e sirva."
+  },
+  {
+    "id": "3",
+    "nome": "Pavê de Chocolate",
+    "categoria": "Sobremesas",
+    "ingredientes": [
+      "200g de chocolate meio amargo",
+      "1 lata de creme de leite",
+      "1 lata de leite condensado",
+      "1 pacote de biscoito champanhe",
+      "1 xícara de leite",
+      "Cacau em pó para polvilhar"
+    ],
+    "Modo de Preparo": "Derreta o chocolate meio amargo em banho-maria e misture com o creme de leite. Em um refratário, faça camadas alternadas de biscoito champanhe umedecidas no leite e creme de chocolate. Leve à geladeira por algumas horas. Antes de servir, polvilhe cacau em pó por cima."
+  },
+  {
+    "id": "4",
+    "nome": "Sopa de Abóbora",
+    "categoria": "Sopas",
+    "ingredientes": [
+      "1 abóbora moranga",
+      "1 cebola picada",
+      "2 dentes de alho picados",
+      "1 litro de caldo de legumes",
+      "100ml de creme de leite",
+      "1 litro de caldo de legumes",
+      "Gengibre ralado a gosto",
+      "Sal e pimenta a gosto"
+    ],
+    "Modo de Preparo": "Descasque e corte a abóbora em cubos. Refogue a cebola e o alho em um pouco de azeite. Adicione a abóbora e refogue por alguns minutos. Cubra com o caldo de legumes e deixe cozinhar até a abóbora estar macia. Bata a sopa no liquidificador até ficar homogênea. Volte ao fogo, adicione o creme de leite e tempere com gengibre ralado, sal e pimenta."
+  },
+  {
+    "id": "5",
+    "nome": "Torta de Limão",
+    "categoria": "Sobremesas",
+    "ingredientes": [
+      "200g de biscoito maisena",
+      "100g de manteiga derretida",
+      "1 lata de leite condensado",
+      "Suco de 4 limões",
+      "Raspas de limão para decorar"
+    ],
+    "Modo de Preparo": "Triture os biscoitos maisena e misture com a manteiga derretida. Forre o fundo de uma forma com essa mistura e leve à geladeira por 30 minutos. Misture o suco de limão com o leite condensado até obter um creme homogêneo. Espalhe esse creme sobre a base de biscoito e leve à geladeira por mais 1 hora. Decore com raspas de limão antes de servir."
+  },
+  {
+    "nome": "Risoto de Funghi",
+    "categoria": "Pratos Principais",
+    "ingredientes": [
+      "200g de arroz arbóreo",
+      "50g de funghi secchi",
+      "1 cebola picada",
+      "2 dentes de alho picados",
+      "100ml de vinho branco seco",
+      "   1 litro de caldo de legumes",
+      "50g de manteiga",
+      "Queijo parmesão ralado a gosto",
+      "Sal e pimenta a gosto"
+    ],
+    "Modo de Preparo": "Refogue a cebola e o alho em um pouco de azeite. Adicione o arroz arbóreo e mexa por alguns minutos. Acrescente o vinho branco e deixe evaporar. Hidrate o funghi secchi em água quente por 15 minutos, escorra e pique. Adicione o funghi ao risoto e vá adicionando o caldo de legumes aos poucos, mexendo sempre, até o arroz estar cozido. Misture a manteiga e o queijo parmesão. Sirva quente, salpicado com mais queijo parmesão.",
+    "id": 6
+  },
+  {
+    "nome": "Risoto de Funghi",
+    "categoria": "Pratos Principais",
+    "ingredientes": [
+      "200g de arroz arbóreo",
+      "50g de funghi secchi",
+      "1 cebola picada",
+      "2 dentes de alho picados",
+      "100ml de vinho branco seco",
+      "   1 litro de caldo de legumes",
+      "50g de manteiga",
+      "Queijo parmesão ralado a gosto",
+      "Sal e pimenta a gosto"
+    ],
+    "Modo de Preparo": "Refogue a cebola e o alho em um pouco de azeite. Adicione o arroz arbóreo e mexa por alguns minutos. Acrescente o vinho branco e deixe evaporar. Hidrate o funghi secchi em água quente por 15 minutos, escorra e pique. Adicione o funghi ao risoto e vá adicionando o caldo de legumes aos poucos, mexendo sempre, até o arroz estar cozido. Misture a manteiga e o queijo parmesão. Sirva quente, salpicado com mais queijo parmesão.",
+    "id": 7
+  }
+]
